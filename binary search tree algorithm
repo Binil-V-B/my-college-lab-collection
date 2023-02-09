@@ -17,6 +17,13 @@ deletion()
 
 inorder(*root)
     step 1: if root=NULL return to main
-    step 2: inorder(root>left)
+    step 2: inorder(root->left)
     step 3: print root->data
-    step 4: inorder(root->right)
+    step 4: inorder(root->right)\
+
+preorder(*root)
+    step 1: if root=NULL return to main
+    step 2: print root->data
+    step 3: preorder(root->left)
+    step 4: preoderr(root->right)
+
