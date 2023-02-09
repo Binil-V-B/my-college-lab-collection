@@ -1,5 +1,9 @@
 main
-
+    step 1:start
+    step 2:print the menu
+    step 3:repeat steps
+    step 4:
+    step 5:call insert() if 
 
 insert()
     step 1: newnode=create newnode
@@ -13,13 +17,25 @@ insert()
     step 9: return to main
 
 deletion()
-    step 1: 
+    step 1: read the value to delete
+    step 2: find the node to delete ,if node not found goto step 12
+    step 3: check for the no of children for the node
+    step 4: if node has one child goto step 5
+    step 5: free the node goto step 13
+    step 6: if the node has 1 child goto step 7
+    step 7: copy the data in child to parent and free the child and goto step 13
+    step 8: if the node has 2 children goto step 9 
+    step 9: find the immediate inorder predecessor or successor 
+    step 10: copy the contents of the successor/predecessor to the node to be deleted
+    step 11: free the successor/predecessor node and goto step 13
+    step 12: print node not found
+    step 13: return to main
 
 inorder(*root)
     step 1: if root=NULL return to function call else step 2
     step 2: inorder(root->left)
     step 3: print root->data
-    step 4: inorder(root->right)\
+    step 4: inorder(root->right)
 
 preorder(*root)
     step 1: if root=NULL return to function call else step 2
