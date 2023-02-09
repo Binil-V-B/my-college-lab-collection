@@ -58,7 +58,7 @@ void main(){
 
     //worst fit
 
-        
+      //hhgjhgjh  
 
     //printing
     printf("\ntask\tmemory choosen\tbalance\n");
