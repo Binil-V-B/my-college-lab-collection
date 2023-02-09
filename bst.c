@@ -1,11 +1,54 @@
 #include<stdio.h>
 #include<stdlib.h>
+
+void insert();
+struct tree* createnode (int);
+void inorder(struct tree*);
+void preoder(struct tree*);
+void postorder(struct tree*);
+
 struct tree{
     int data;
     struct tree *left,*right;
 }*root=NULL,*newnode,*ptr,*pre;
 
 
+void insert(){
+    int a;
+    printf("enter the value to insert: ");
+    scanf("%d",&a);
+    newnode=create_node(a);
+    if(root==NULL){
+        root=newnode;
+    }
+    else{
+         
+    }
+
+}
+
+struct tree* search(int value){
+    ptr=root;
+    if(root==NULL)
+        return NULL;
+    while (ptr!=NULL)
+    {
+        if(value<ptr->data)
+            ptr=ptr->left;
+        else if(value>ptr->data)
+            ptr=ptr->right;
+        else
+    }
+    
+}
+
+
+struct tree* create_node (int value){
+    newnode=(struct tree*)malloc(sizeof(struct tree));
+    newnode->data=value;
+    newnode->left=newnode->right=NULL;
+    return newnode;
+}
 
 
 void inorder(struct tree* a){
