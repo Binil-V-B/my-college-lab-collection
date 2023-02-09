@@ -1,9 +1,16 @@
 main
     step 1:start
     step 2:print the menu
-    step 3:repeat steps
-    step 4:
-    step 5:call insert() if 
+    step 3:repeat steps 4 to 5
+    step 4:read the choice
+    step 5:call insert() if choice =1
+           call delete() if choice =2
+           call inorder(root) if choice=3
+           call preorder(root) if choice=4
+           call postorder(root) if choice=5
+           exit the program if choice=6
+    step 6:stop
+    
 
 insert()
     step 1: newnode=create newnode
@@ -16,7 +23,7 @@ insert()
     step 8: add the newnode to the tree
     step 9: return to main
 
-deletion()
+delete()
     step 1: read the value to delete
     step 2: find the node to delete ,if node not found goto step 12
     step 3: check for the no of children for the node
