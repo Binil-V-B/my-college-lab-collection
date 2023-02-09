@@ -40,7 +40,9 @@ void insert(){
     
 }
 
-void delete(){
+void delete(int value){
+    ptr=root;
+    
 
 }
 
