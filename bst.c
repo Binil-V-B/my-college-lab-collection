@@ -6,45 +6,7 @@ struct tree{
 }*root=NULL,*newnode,*ptr,*pre;
 
 
-void insert(){
-    int a;
-    printf("Enter the value to insert: ");
-    scanf("%d",&a);
 
-    newnode=(struct tree*)malloc(sizeof(struct tree));
-    newnode->data=a;
-    newnode->left=newnode->right=NULL;    
-
-    if (root==NULL)
-    {
-        root=newnode;
-    }
-    else{
-        ptr=root;
-        while (ptr!=NULL)
-        {
-            pre=ptr;
-            if (a>ptr->data)
-            {
-                ptr=ptr->right;
-            }
-            else{
-                ptr=ptr->left;
-            }   
-        }
-        if(a>pre->data)
-            pre->right=newnode;
-        else
-            pre->left=newnode;        
-    }
-    
-}
-
-void delete(int value){
-    ptr=root;
-    
-
-}
 
 void inorder(struct tree* a){
     if(a==NULL)
@@ -73,13 +35,19 @@ void main(){
     int c;
     
     do{
-        printf("\n1.Insert\n2.print\n-->  ");
+        printf("\n1.Insert a node\n2.delete a node\nprint:\n3.inorder\n4.preorder\n5.postorder\n-->  ");
         scanf("%d",&c);
         switch (c)
         {
         case 1: insert();
             break;
-        case 2: inorder(root);
+        case 2: 
+            break;
+        case 3: inorder(root);
+            break;
+        case 4: preoder(root);
+            break;
+        case 5: postorder(root);
             break;
         
         default:printf("invalid input");
