@@ -1,0 +1,7 @@
+main
+
+
+insert()
+    step 1: newnode=create newnode
+    step 2: read the value to insert -a
+    step 3: 
