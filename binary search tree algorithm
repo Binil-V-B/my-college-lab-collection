@@ -4,4 +4,19 @@ main
 insert()
     step 1: newnode=create newnode
     step 2: read the value to insert -a
-    step 3: 
+    step 3: newnode->data=a
+    step 4: newnode->left=newnode->right=NULL
+    step 5: if root=NULL goto step 6 else step 7
+    step 6: root=newnode goto step 
+    step 7: traverse the tree until the appropriate node is found
+    step 8: add the newnode to the tree
+    step 9: return to main
+
+deletion()
+    step 1: 
+
+inorder(*root)
+    step 1: if root=NULL return to main
+    step 2: inorder(root>left)
+    step 3: print root->data
+    step 4: inorder(root->right)
