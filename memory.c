@@ -19,9 +19,10 @@ void main(){
     printf("enter the no of processes: ");
     scanf("%d",&np);
     struct process pro[np];
+    printf("enter the size of each process: ");
     for (int i = 0; i < np; i++)
     {
-        scanf("%d",pro[i].size);
+        scanf("%d",&pro[i].size);
         pro[i].allocated=-1;
     }
 
@@ -37,6 +38,18 @@ void main(){
         }   
     }
     
+    printf("\nsi.no\tprocess\t\tblock size");
+    for (int i = 0; i < np; i++)
+    {
+        if (pro[i].allocated!=-1)
+        {
+            printf("\n%d\t%d\t\t%d",i+1,pro[i].size,pro[i].allocated);
+        }
+        else{
+            printf("\n%d\t%d\t\tnot allocatted",i+1,pro[i].size);
+        }
+        
+    }
     
     
     
