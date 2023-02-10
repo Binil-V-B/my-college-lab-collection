@@ -28,18 +28,7 @@ void main(){
 
 
     //code to perform first fit
-    for (int  i = 0; i < np; i++)
-    {
-        for (int  j = 0; j < nb; j++)
-        {
-            if(pro[i].size<=block[j]){
-                pro[i].allocated=block[j];
-                block[j]=block[j]-pro[i].size;
-                break;
-            }
-        }   
-    }
-    
+  
 
     //code for printing
     printf("\nsi.no\tprocess\t\tblock size");
