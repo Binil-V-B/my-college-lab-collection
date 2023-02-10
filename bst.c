@@ -37,7 +37,7 @@ struct tree* search(int value){
             ptr=ptr->left;
         else if(value>ptr->data)
             ptr=ptr->right;
-        else
+        else{}
     }
     
 }
