@@ -23,7 +23,7 @@ void main(){
     for (int i = 0; i < np; i++)
     {
         scanf("%d",&pro[i].size);
-        pro[i].allocated=-1;;
+        pro[i].allocated=-1;
     }
 
 
