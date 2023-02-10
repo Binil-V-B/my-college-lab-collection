@@ -7,7 +7,7 @@ struct process{
 
 
 void main(){
-    int nb,np,best_node;
+    int nb,np,worst_node;
     printf("enter the no of memory blocks: ");
     scanf("%d",&nb);
     int block[nb];
@@ -27,25 +27,25 @@ void main(){
     }
 
 
-    //code to perform best fit
+    //code to perform worst fit
   for (int  i = 0; i < np; i++)
   {
-    best_node=-1;
+    worst_node=-1;
     for (int j = 0; j < nb; j++)
     {
         if(pro[i].size<=block[j]){
-            if(best_node==-1)
-                best_node=j;
+            if(worst_node==-1)
+                worst_node=j;
             else{
-                if(block[j]<block[best_node]){
-                    best_node=j;
+                if(block[j]>block[worst_node]){
+                    worst_node=j;
                 }
             }
         }
     }
-    if(best_node!=-1){
-        pro[i].allocated=block[best_node];
-        block[best_node]=block[best_node]-pro[i].allocated;
+    if(worst_node!=-1){
+        pro[i].allocated=block[worst_node];
+        block[worst_node]=block[worst_node]-pro[i].allocated;
         }
     
   }
