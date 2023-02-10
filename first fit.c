@@ -26,6 +26,8 @@ void main(){
         pro[i].allocated=-1;
     }
 
+
+    //code to perform first fit
     for (int  i = 0; i < np; i++)
     {
         for (int  j = 0; j < nb; j++)
@@ -38,6 +40,8 @@ void main(){
         }   
     }
     
+
+    //code for printing
     printf("\nsi.no\tprocess\t\tblock size");
     for (int i = 0; i < np; i++)
     {
@@ -47,10 +51,6 @@ void main(){
         }
         else{
             printf("\n%d\t%d\t\tnot allocatted",i+1,pro[i].size);
-        }
-        
+        }   
     }
-    
-    
-    
 }

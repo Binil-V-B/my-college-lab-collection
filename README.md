@@ -4,4 +4,4 @@
 <li>program is under construction
 <hr>
   <li> bst.c --> binary search tree
-  <li> memory.c --> first fit memory allocation
+  <li> first fit.c --> first fit memory allocation
