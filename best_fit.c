@@ -7,7 +7,7 @@ struct process{
 
 
 void main(){
-    int nb,np;
+    int nb,np,best_node;
     printf("enter the no of memory blocks: ");
     scanf("%d",&nb);
     int block[nb];
@@ -27,7 +27,18 @@ void main(){
     }
 
 
-    //code to perform first fit
+    //code to perform besr fit
+  for (int  i = 0; i < np; i++)
+  {
+    best_node=-1;
+    for (int j = 0; j < nb; j++)
+    {
+        if(pro[i].size<=block[j]){
+
+        }
+    }
+    
+  }
   
 
     //code for printing
