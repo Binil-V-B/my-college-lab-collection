@@ -45,7 +45,7 @@ void main(){
     }
     if(worst_node!=-1){
         pro[i].allocated=block[worst_node];
-        block[worst_node]=block[worst_node]-pro[i].allocated;
+        block[worst_node]=block[worst_node]-pro[i].size;
         }
     
   }
