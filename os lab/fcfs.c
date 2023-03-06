@@ -7,7 +7,7 @@ struct pro{
 void read(struct pro [],int);
 void sort(struct pro [],int );
 void calc(struct pro [],int ,float *,float *);
-void print(struct pro [],int );
+void print(struct pro [],int ,int);
 
 
 
@@ -18,11 +18,12 @@ void main(){
     scanf("%d",&a);
     struct pro ar[a];
     read(ar,a);
-    //sort(ar,a);
+    print(ar,a,0);
+    sort(ar,a);
     calc(ar,a,&avg_tat,&avg_wt);
-    print(ar,a);
-    printf("average waiting time: %f.2",avg_wt);
-    printf("\naverage turn around time: %f.2",avg_tat);
+    print(ar,a,1);
+    printf("average waiting time: %.2f",avg_wt);
+    printf("\naverage turn around time: %.2f",avg_tat);
 
 }
 
@@ -69,10 +70,20 @@ void calc(struct pro a[],int n,float *tat,float *wt){
     *wt =  (float) wt_sum/n;
 }
 
-void print(struct pro a[],int n){
-    printf("\n\npid\tat\tbt\tct\ttat\twt\n---------------------------------------------\n");
+void print(struct pro a[],int n,int c){
+    if(c){
+    printf("\nafter scheduling:\npid\tat\tbt\tct\ttat\twt\n---------------------------------------------\n");
     for(int i=0;i<n;i++){
         printf("%d\t%d\t%d\t%d\t%d\t%d\n",a[i].pid,a[i].at,a[i].bt,a[i].ct,a[i].tat,a[i].wt);
     }
     printf("\n");
+    }
+    else{
+        printf("\nbefore scheduling:\npid\tat\tbt\n-------------------------------\n");
+    for(int i=0;i<n;i++){
+        printf("%d\t%d\t%d\n",a[i].pid,a[i].at,a[i].bt);
+    }
+    printf("\n");
+    }
+    
 }
