@@ -4,6 +4,13 @@ struct pro{
     int pid,at,bt,ct,tat,wt;
 };
 
+void read(struct pro [],int);
+void sort(struct pro [],int );
+void calc(struct pro [],int ,float *,float *);
+void print(struct pro [],int );
+
+
+
 void main(){
     int a;
     float avg_tat=0,avg_wt=0;
@@ -14,8 +21,8 @@ void main(){
     //sort(ar,a);
     calc(ar,a,&avg_tat,&avg_wt);
     print(ar,a);
-    printf("average waiting time: %f",avg_wt);
-    printf("\naverage turn around time: %f",avg_tat);
+    printf("average waiting time: %f.2",avg_wt);
+    printf("\naverage turn around time: %f.2",avg_tat);
 
 }
 
@@ -58,8 +65,8 @@ void calc(struct pro a[],int n,float *tat,float *wt){
         tat_s+=a[i].tat;
         wt_sum+=a[i].wt;
     }
-    *tat=tat_s/n;
-    *wt = wt_sum/n;
+    *tat= (float) tat_s/n;
+    *wt =  (float) wt_sum/n;
 }
 
 void print(struct pro a[],int n){
