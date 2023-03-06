@@ -6,23 +6,27 @@ struct pro{
 
 void main(){
     int a;
+    float avg_tat=0,avg_wt=0;
     printf("Enter the no of processes: ");
     scanf("%d",&a);
     struct pro ar[a];
     read(ar,a);
-    sort(ar,a);
-    calc(ar,a);
+    //sort(ar,a);
+    calc(ar,a,&avg_tat,&avg_wt);
+    print(ar,a);
+    printf("average waiting time: %f",avg_wt);
+    printf("\naverage turn around time: %f",avg_tat);
 
 }
 
 void read(struct pro a[],int n){
     for(int i=0;i<n;i++){
         printf("Enter the process id: ");
-        scanf("%d",a[i].pid);
+        scanf("%d",&a[i].pid);
         printf("Enter the arrival time: ");
-        scanf("%d",a[i].at);
+        scanf("%d",&a[i].at);
         printf("Enter the buffer time: ");
-        scanf("%d",a[i].bt);
+        scanf("%d",&a[i].bt);
     }
 }
 
@@ -39,7 +43,7 @@ void sort(struct pro a[],int n){
     }
 }
 
-void calc(struct pro a[],int n){
+void calc(struct pro a[],int n,float *tat,float *wt){
     a[0].ct=a[0].bt+a[0].at;
     a[0].tat=a[0].ct-a[0].at;
     a[0].wt=a[0].tat-a[0].bt;
@@ -48,13 +52,20 @@ void calc(struct pro a[],int n){
         a[i].tat=a[i].ct-a[i].at;
         a[i].wt=a[i].tat-a[i].bt;
     }
+    int tat_s=0,wt_sum=0;
+
+    for(int i=0;i<n;i++){
+        tat_s+=a[i].tat;
+        wt_sum+=a[i].wt;
+    }
+    *tat=tat_s/n;
+    *wt = wt_sum/n;
 }
 
-void avg1(struct pro a[],int n){
-    float a;
-
-
+void print(struct pro a[],int n){
+    printf("\n\npid\tat\tbt\tct\ttat\twt\n---------------------------------------------\n");
+    for(int i=0;i<n;i++){
+        printf("%d\t%d\t%d\t%d\t%d\t%d\n",a[i].pid,a[i].at,a[i].bt,a[i].ct,a[i].tat,a[i].wt);
+    }
+    printf("\n");
 }
-
-
-void print(){}
