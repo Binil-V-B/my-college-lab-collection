@@ -10,4 +10,4 @@
 
 
 <hr>
-<img src="https://github.com/Binil-V-B/my-college-lab-collection/blob/main/logo.png" width="200" height="150">
+<img src="https://github.com/Binil-V-B/my-college-lab-collection/blob/main/logo.png" width="200" height="170">
