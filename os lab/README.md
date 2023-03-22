@@ -6,3 +6,7 @@
 + sjf - shortest job first
   + sjf_nonpreemptive.c
   + sjf_withpreemption.c
+
+
+
+= 
