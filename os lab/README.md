@@ -3,4 +3,6 @@
 + best_fit.c  --> best fit memory allocation
 + worst_fit.c -->worst fit memory allocation
 + fcfs.c --> program to demonstrate the working of first come first serve cpu scheduliing algorithm
-
++ sjf - shortest job first
+  + sjf_nonpreemptive.c
+  + sjf_withpreemption.c
