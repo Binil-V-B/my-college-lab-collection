@@ -8,4 +8,4 @@
   <li> first fit.c --> first fit memory allocation
 
 
-![my logo this is not trademark]()
+![my logo this is not trademark](/main/logo.png)
