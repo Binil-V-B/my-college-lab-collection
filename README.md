@@ -2,6 +2,7 @@
 
 + algorith completed <br>
 + program is under construction
++ bst.c --> binary search tree 
 <hr>
 <h3>:open_file_folder:OS lab </h3>
  It has all the program related to the subject OS
