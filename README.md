@@ -10,8 +10,3 @@
 
 <hr>
 <img src="https://github.com/Binil-V-B/my-college-lab-collection/blob/main/logo.png" width="200" height="200">
-
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/Binil-V-B/my-college-lab-collection/blob/main/logo.png">
-  <img alt="Text changing depending on mode. Light: 'So light!' Dark: 'So dark!'" src=".https://github.com/Binil-V-B/my-college-lab-collection/blob/main/logo_d.png">
-</picture>
