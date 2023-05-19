@@ -7,7 +7,7 @@ void main(){
 	int shmid;
 	char *s;
 	key_t k;
-	k=ftop('a',5);
+	k=ftok('a',5);
 	shmid=shmget(k,1024,IPC_CREAT|0666);
 	s=shmat(shmid,NULL,0);
 	printf("Enter a message: ");
