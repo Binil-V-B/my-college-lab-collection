@@ -16,6 +16,16 @@ void read(pro ar[],int n){
     }
 }
 
+void sort(pro ar[], int n){
+    pro temp;
+    for (int i = 0; i < n; i++)
+    {
+        
+        
+    }
+    
+}
+
 
 void print(pro ar[],int n){
     printf("process|\tat|\tbt|\n");
@@ -32,7 +42,9 @@ void print(pro ar[],int n){
 
 
 void main(){
-	int n;
+	int n,ts;
+    printf("enter the time space for each processes: ");
+    scanf("%d",&ts);
 	printf("enter the no of process: ");
 	scanf("%d",&n);
 	pro ar[n];
