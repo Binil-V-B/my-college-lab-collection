@@ -16,10 +16,27 @@ void read(pro ar[],int n){
     }
 }
 
-void sort(pro ar[], int n){
+void sort(pro ar[], int n){          //selection sort is implemented here
+    int small;
     pro temp;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n-1; i++)
     {
+        small =i;
+        for (int j = i; j < n ; j++)
+        {
+            if (ar[j].at < ar[small].at)
+            {
+                small = j;
+            }
+            
+        }
+        if (small != i)
+        {
+            temp = ar[i];
+            ar[i]=ar[small];
+            ar[small] = temp;
+        }
+        
         
         
     }
@@ -33,6 +50,7 @@ void print(pro ar[],int n){
     {
         printf("%d\t%d\t%d\n",i+1,ar[i].at,ar[i].bt);
     }
+    printf("\n");
     
 }
 
@@ -49,5 +67,7 @@ void main(){
 	scanf("%d",&n);
 	pro ar[n];
 	read(ar,n);
+    print(ar,n);
+    sort(ar,n);
     print(ar,n);
 }
