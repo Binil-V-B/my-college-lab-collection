@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 struct process{
-    int at,bt,ct,tat,wt;
+    int at,bt,ct,tat,wt,bt1;
 };
 typedef struct process pro;
 
@@ -13,6 +13,7 @@ void read(pro ar[],int n){
 	scanf("%d",&ar[i].at);
     printf("enter the burst time of process no %d:",i+1);
     scanf("%d",&ar[i].bt);
+    ar[i].bt1 = ar[i].bt;
     }
 }
 
@@ -39,6 +40,25 @@ void sort(pro ar[], int n){          //selection sort is implemented here
         
         
         
+    }
+    
+}
+
+void work(pro ar[],int n, int time){
+    int current_time;
+    current_time = ar[0].at;
+    for (int  i = 0; i < n; i++)
+    {
+        
+    
+    
+    if (ar[i].bt1 <= time)
+    {
+        ar[i].bt = 0;
+    }
+    else if(ar[i].bt1 > time){
+        
+    }
     }
     
 }
