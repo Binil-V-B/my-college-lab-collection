@@ -45,22 +45,7 @@ void sort(pro ar[], int n){          //selection sort is implemented here
 }
 
 void work(pro ar[],int n, int time){
-    int current_time;
-    current_time = ar[0].at;
-    for (int  i = 0; i < n; i++)
-    {
-        
-    
-    
-    if (ar[i].bt1 <= time)
-    {
-        ar[i].bt = 0;
-    }
-    else if(ar[i].bt1 > time){
-        
-    }
-    }
-    
+     
 }
 
 
