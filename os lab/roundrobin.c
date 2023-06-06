@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 struct process{
-    int at,bt,ct,tat,wt,bt1;
+    int at,bt,ct,tat,wt,bt1,flag;
 };
 typedef struct process pro;
 
@@ -44,9 +44,22 @@ void sort(pro ar[], int n){          //selection sort is implemented here
     
 }
 
-void work(pro ar[],int n, int time){
-     
+void work(pro ar[],int n, int ts,int rq){
+    if (ar[0].bt1 <= ts)
+    {
+        ar[0].ct = ar[0].bt + ar[0].at;
+        ar[0].bt1=0;
+    }
+    else{
+        ar[0].ct = ar[0].bt + ar[0].at;
+        ar[0].bt1 = ar[0].bt1-ts;
+    }
+    rq[0]=ar[0].pno; 
 }
+
+
+
+
 
 
 void print(pro ar[],int n){
@@ -65,7 +78,7 @@ void print(pro ar[],int n){
 
 
 void main(){
-	int n,ts;
+	int n,ts,rq;
     printf("enter the time space for each processes: ");
     scanf("%d",&ts);
 	printf("enter the no of process: ");
@@ -75,4 +88,5 @@ void main(){
     print(ar,n);
     sort(ar,n);
     print(ar,n);
+    work(ar,n,ts,rq)
 }
