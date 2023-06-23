@@ -37,11 +37,41 @@ void read(struct process ar[],int n){
         ar[i].check=0;
 	}
 }
-void sort(){}
+
+void sort(struct process ar[],int n){
+    struct process temp;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; i < n-1; i++)
+        {
+            if(ar[j+1].at<ar[j].at){
+                temp=ar[j+1];
+                ar[j+1]=ar[j];
+                ar[j]=temp; 
+            }
+        }   
+    }
+}
+
+void work(struct process ar[],int n){
+
+}
+
+void print(struct process ar[],int n){
+    printf("\npid\tpr\tat\tbt\tct\ttat\twt\n---------------------------------------------\n");
+    for(int i=0;i<n;i++){
+        printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n",ar[i].pid,ar[i].pr,ar[i].at,ar[i].bt,ar[i].ct,ar[i].tat,ar[i].wt);
+    }
+    printf("\n"); 
+}
+
+
 void main(){
     int n;
     printf("enter the no of processes: ");
     scanf("%d",&n);
     struct process ar[n];
     read(ar,n);
+    sort(ar,n);
+    print(ar,n);
 }
