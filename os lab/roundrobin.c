@@ -14,6 +14,7 @@ void read(pro ar[],int n){
     printf("enter the burst time of process no %d:",i+1);
     scanf("%d",&ar[i].bt);
     ar[i].bt1 = ar[i].bt;
+    ar[i].flag=0;
     }
 }
 
@@ -45,6 +46,7 @@ void sort(pro ar[], int n){          //selection sort is implemented here
 }
 
 void work(pro ar[],int n, int ts,int rq){
+    int k;
     if (ar[0].bt1 <= ts)
     {
         ar[0].ct = ar[0].bt + ar[0].at;
@@ -55,6 +57,12 @@ void work(pro ar[],int n, int ts,int rq){
         ar[0].bt1 = ar[0].bt1-ts;
     }
     rq[0]=ar[0].pno; 
+    ar[0].flag = 1;
+
+    for (int i = 0; i < n; ++i)
+    {
+        /* code */
+    }
 }
 
 
