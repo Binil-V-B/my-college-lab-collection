@@ -71,8 +71,8 @@ void work(struct process ar[],int n){
                     high=j;
                 }
                 else{
-                    if (ar[j].pr > ar[high].pr)
-                    {
+                    if (ar[j].pr > ar[high].pr) // use '<' if the highest priority is represented by a small number
+                    {                           // use '>' if the highest priority is represented by a larger number
                         high=j;
                     }
                     
@@ -86,12 +86,17 @@ void work(struct process ar[],int n){
     }
 }
 
-void calc(struct process ar[],int n,int *avg_wt,int *avg_tat){
+void calc(struct process ar[],int n,float *avg_wt,float *avg_tat){
+    float Avg_wt=0,Avg_tat=0;
     for (int i = 0; i < n; i++)
     {
-        /* code */
+        ar[i].tat = ar[i].ct - ar[i].at;
+        ar[i].wt = ar[i].tat - ar[i].bt;
+        Avg_tat+=ar[i].tat;
+        Avg_wt+=ar[i].wt;
     }
-    
+    *avg_tat = Avg_tat/n;
+    *avg_wt = Avg_wt/n;
 }
 
 void print(struct process ar[],int n){
@@ -105,11 +110,14 @@ void print(struct process ar[],int n){
 
 void main(){
     int n;
+    float avg_wt,avg_tat;
     printf("enter the no of processes: ");
     scanf("%d",&n);
     struct process ar[n];
     read(ar,n);
     sort(ar,n);
     work(ar,n);
+    calc(ar,n,&avg_wt,&avg_tat);
     print(ar,n);
+    printf("Average waiting time = %.2f\nAverage turn around time = %.2f\n",avg_wt,avg_tat);
 }
