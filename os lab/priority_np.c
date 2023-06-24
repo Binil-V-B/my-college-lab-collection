@@ -54,11 +54,53 @@ void sort(struct process ar[],int n){
 }
 
 void work(struct process ar[],int n){
+    int current_time,high;
+    current_time = ar[0].at + ar[0].bt;
+    ar[0].ct = current_time;
+    ar[0].check =1;
+    printf("\nGantt chart:\t[ %d ]",ar[0].pid);
+    for (int i = 1; i < n; i++)
+    {
+        high=-1;
+        for (int j = 1; j < n; j++)
+        {
+            if (ar[j].at<=current_time && ar[j].check==0)
+            {
+                if (high==-1)
+                {
+                    high=j;
+                }
+                else{
+                    if (ar[j].pr > ar[high].pr) // use '<' if the highest priority is represented by a small number
+                    {                           // use '>' if the highest priority is represented by a larger number
+                        high=j;
+                    }
+                    
+                }   
+            } 
+        }
+        ar[high].ct=ar[high].bt+current_time;
+        current_time+=ar[high].ct;
+        ar[high].check=1;
+        printf("\t[ %d ]",ar[high].pid);
+    }
+}
 
+void calc(struct process ar[],int n,float *avg_wt,float *avg_tat){
+    float Avg_wt=0,Avg_tat=0;
+    for (int i = 0; i < n; i++)
+    {
+        ar[i].tat = ar[i].ct - ar[i].at;
+        ar[i].wt = ar[i].tat - ar[i].bt;
+        Avg_tat+=ar[i].tat;
+        Avg_wt+=ar[i].wt;
+    }
+    *avg_tat = Avg_tat/n;
+    *avg_wt = Avg_wt/n;
 }
 
 void print(struct process ar[],int n){
-    printf("\npid\tpr\tat\tbt\tct\ttat\twt\n---------------------------------------------\n");
+    printf("\n\npid\tpr\tat\tbt\tct\ttat\twt\n---------------------------------------------\n");
     for(int i=0;i<n;i++){
         printf("%d\t%d\t%d\t%d\t%d\t%d\t%d\n",ar[i].pid,ar[i].pr,ar[i].at,ar[i].bt,ar[i].ct,ar[i].tat,ar[i].wt);
     }
@@ -68,10 +110,14 @@ void print(struct process ar[],int n){
 
 void main(){
     int n;
+    float avg_wt,avg_tat;
     printf("enter the no of processes: ");
     scanf("%d",&n);
     struct process ar[n];
     read(ar,n);
     sort(ar,n);
+    work(ar,n);
+    calc(ar,n,&avg_wt,&avg_tat);
     print(ar,n);
+    printf("Average waiting time = %.2f\nAverage turn around time = %.2f\n",avg_wt,avg_tat);
 }
