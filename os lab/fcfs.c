@@ -4,28 +4,9 @@ struct pro{
     int pid,at,bt,ct,tat,wt;
 };
 
-void read(struct pro [],int);
-void sort(struct pro [],int );
-void calc(struct pro [],int ,float *,float *);
-void print(struct pro [],int ,int);
 
 
 
-void main(){
-    int a;
-    float avg_tat=0,avg_wt=0;
-    printf("Enter the no of processes: ");
-    scanf("%d",&a);
-    struct pro ar[a];
-    read(ar,a);
-    print(ar,a,0);
-    sort(ar,a);
-    calc(ar,a,&avg_tat,&avg_wt);
-    print(ar,a,1);
-    printf("average waiting time: %.2f",avg_wt);
-    printf("\naverage turn around time: %.2f",avg_tat);
-
-}
 
 void read(struct pro a[],int n){
     for(int i=0;i<n;i++){
@@ -86,4 +67,20 @@ void print(struct pro a[],int n,int c){
     printf("\n");
     }
     
+}
+
+void main(){
+    int a;
+    float avg_tat=0,avg_wt=0;
+    printf("Enter the no of processes: ");
+    scanf("%d",&a);
+    struct pro ar[a];
+    read(ar,a);
+    print(ar,a,0);
+    sort(ar,a);
+    calc(ar,a,&avg_tat,&avg_wt);
+    print(ar,a,1);
+    printf("average waiting time: %.2f",avg_wt);
+    printf("\naverage turn around time: %.2f",avg_tat);
+
 }
