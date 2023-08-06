@@ -6,6 +6,7 @@ declare and initialze a variable total head movement to 0
 create a loop to loop through the array
     total head movement = total head movement + abs(ar[i]-initial)
     update initial to ar[i]
+    i++
     repeat the loop for n
 */
 
