@@ -41,9 +41,10 @@ void main(){
     }
     printf("enter the max size of the disk: ");
     scanf("%d",&max);
+    max--;
     printf("enter the initial position of the head: ");
     scanf("%d",&initial);
-    printf("enter the direction of movement of the head \n 0-left \n1-right\n:");
+    printf("enter the direction of movement of the head \n 0-low \n 1-high\n:");
     scanf("%d",&drection);
 
 
@@ -55,7 +56,7 @@ void main(){
             if (ar[j]>ar[j+1])
             {
                 temp=ar[j];
-                ar[j+1]=ar[j];
+                ar[j]=ar[j+1];
                 ar[j+1]=temp;
             }
             
@@ -83,14 +84,21 @@ void main(){
             initial=ar[i];
         }
         headmovement+=max-initial;
-        
+        initial=max;
+        for ( i = index-1; i >= 0; i--)
+        {
+            headmovement+=initial-ar[i];
+            initial=ar[i];
+        }
         break;
     
     case 0:
+        headmovement+=initial;
+        headmovement+=ar[n-1];
         break;
 
     default:
-        break;
+        exit(0);
     }
 
     printf("total head movement=%d\n",headmovement);    
