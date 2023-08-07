@@ -10,7 +10,7 @@ find the index of request in array which is right next to the initial position o
 
 if direction is to right (1)
     i=index
-    create a loop which starts from the i and iterates until i<=max  --this will visit all the cylinders to the right of the intial cylinder
+    create a loop which starts from the i and iterates until i<n  --this will visit all the cylinders to the right of the intial cylinder
     headmovement+=ar[i]-initial
     initial=ar[i]
     i++
