@@ -35,3 +35,60 @@
             if unfinished print unsafe
             else print the safe sequence
 */
+
+#include<stdio.h>
+void main(){
+    int np,nr;
+    printf("enter the no of processes: ");
+    scanf("%d",&np);
+    printf("enter the no of resources: ");
+    scanf("%d",&nr);
+    int available[nr],work[nr],ss[np],finish[np];
+    int max[np][nr],allocation[np][nr],need[np][nr];
+
+    printf("enter the allocation matrix: ");
+    for (int i = 0; i < np; i++)
+    {
+        for (int j = 0; j < nr; j++)
+        {
+            scanf("%d",&allocation[i][j]);
+        }
+        
+    }
+
+    printf("enter the max matrix: ");
+    for (int i = 0; i < np; i++)
+    {
+        for (int j = 0; j < nr; j++)
+        {
+            scanf("%d",&max[i][j]);
+        }
+        
+    }
+
+    printf("enter the available resources: ");
+    for (int i = 0; i < nr; i++)
+    {
+        scanf("%d",&available[i]);
+    }
+
+    for (int i = 0; i < np; i++)
+    {
+        finish[i]=0;
+    }
+    
+    printf("need matrix: \n");
+    for (int i = 0; i < np; i++)
+    {
+        for (int j = 0; j < nr; j++)
+        {
+            need[i][j]=max[i][j]-allocation[i][j];
+            printf("%d \t",need[i][j]);
+        }
+        printf("\n");
+    }
+    
+
+    
+    
+}
