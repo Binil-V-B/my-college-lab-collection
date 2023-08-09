@@ -38,7 +38,7 @@
 
 #include<stdio.h>
 void main(){
-    int np,nr;
+    int np,nr,flag,k=0;
     printf("enter the no of processes: ");
     scanf("%d",&np);
     printf("enter the no of resources: ");
@@ -70,6 +70,7 @@ void main(){
     for (int i = 0; i < nr; i++)
     {
         scanf("%d",&available[i]);
+        work[i]=available[i];
     }
 
     for (int i = 0; i < np; i++)
@@ -87,8 +88,72 @@ void main(){
         }
         printf("\n");
     }
-    
+    printf("\n");
 
+
+    for (int i = 0; i < np; i++)
+    {
+        for (int j = 0; j < np; j++)
+        {
+            flag=0;
+            if (finish[j]==0)
+            {
+                for (int a = 0; a < nr; a++)
+                {
+                    if(need[j][a]>work[a]){
+                        flag=1;
+                        break;
+                    }
+                }
+                if (flag==0)
+                {
+                    for (int a = 0; a < nr; a++)
+                    {
+                        work[a]+=need[j][a];
+                    }
+                    finish[j]=1;
+                    ss[k]=j;
+                    k++;
+                    
+                }
+                
+                
+            }
+            
+        }
+        
+    }
     
-    
+    // for (int i = 0; i < np; i++)
+    // {
+    //     printf("%d\t",finish[i]);
+    // }
+    // printf("\n");
+
+    flag=0;
+    for (int i = 0; i < np; i++)
+    {
+        if(finish[i]==0){
+            flag=1;
+            break;
+        }
+    }
+    if (flag==1)
+    {
+        printf("system is not safe\n");
+    }
+    else{
+        printf("system is safe\nsafe sequence: ");
+        for (int i = 0; i < np; i++)
+        {
+            printf(" %d ",ss[i]);
+            if (i<np-1)
+            {
+                printf("->");
+            }
+            
+        }
+        printf("\n");
+        
+    }   
 }
