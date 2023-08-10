@@ -20,3 +20,57 @@ increment i
 goto line 
 
 */
+
+#include<stdio.h>
+void main(){
+    int np,nf,avail,paf=0;
+    printf("enter the no of pages: ");
+    scanf("%d",&np);
+    int rs[np];
+    printf("enter the reference string: \n");
+    for (int i = 0; i < np; i++)
+    {
+        scanf("%d",&rs[i]);
+    }
+    printf("enter the no of frames: ");
+    scanf("%d",&nf);
+    int frames[nf];
+    for (int i = 0; i < nf; i++)
+    {
+        frames[i]=-1;
+    }
+
+
+    int k=0;
+    printf("refe string\tframe\n");
+    for (int i = 0; i < np; i++)
+    {
+        printf("%d\t",rs[i]);
+        avail=0;
+        for (int j = 0; j < nf; j++)
+        {
+            if (frames[j]==rs[i])
+            {
+                avail=1;
+                break;
+            }
+        }
+        if (avail==0)
+        {
+            paf++;
+            frames[k]=rs[i];
+            k=(k+1)%nf;
+            for (int a = 0; a < nf; a++)
+            {
+                printf("\t%d",frames[a]);
+            }
+            
+            
+        }
+        printf("\n");
+        
+    }
+    printf("\ntotal page fault= %d\n",paf);
+    
+       
+}
