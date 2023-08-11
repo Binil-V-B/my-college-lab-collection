@@ -8,11 +8,13 @@
         allocation[][] -used to store the no of resouces that are currently allocated to each process
         ss[] --used to store safe sequence
         finish[] --used to store status of each process completed/not completed
+
+
     algorithm:
-        read the np,nr,
+        read the np,nr
         read the allocation matrix
         read the max matrix
-        read the no of available of each resource and copy the available matrix to work matrix
+        read the no of available of each resource and copy the available array to work matrix
         set the finish[] of all process to 0
         calculate the need matrix
 
@@ -109,7 +111,7 @@ void main(){
                 {
                     for (int a = 0; a < nr; a++)
                     {
-                        work[a]+=need[j][a];
+                        work[a]+=allocation[j][a];
                     }
                     finish[j]=1;
                     ss[k]=j;
@@ -146,12 +148,7 @@ void main(){
         printf("system is safe\nsafe sequence: ");
         for (int i = 0; i < np; i++)
         {
-            printf(" %d ",ss[i]);
-            if (i<np-1)
-            {
-                printf("->");
-            }
-            
+            printf(" %d ",ss[i]);    
         }
         printf("\n");
         
