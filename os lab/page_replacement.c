@@ -6,7 +6,7 @@ create an array frames[nf]
 set the vaule of all index in frames[] as -1
 set i=0,pagefault=0,k=0;
 
-declare a vaiable j and initailize with 0 to track the position in the frame
+declare a vaiable i and initailize with 0 to track the position in the frame
 print the i the index of reference string
 set avail =0
 check if the current reference string is alredy present on the frame
@@ -63,9 +63,7 @@ void main(){
             for (int a = 0; a < nf; a++)
             {
                 printf("\t%d",frames[a]);
-            }
-            
-            
+            }  
         }
         printf("\n");
         
