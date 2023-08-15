@@ -31,6 +31,4 @@ void main(){
         initial=ar[i];
     }
     printf("total head movement = %d\n",hm);
-    
-    
 }
