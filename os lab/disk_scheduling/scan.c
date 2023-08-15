@@ -93,8 +93,18 @@ void main(){
         break;
     
     case 0:
+        for (i = index-1; i >= 0; i--)
+        {
+            headmovement+=initial-ar[i];
+            initial=ar[i];
+        }
         headmovement+=initial;
-        headmovement+=ar[n-1];
+        initial=0;
+        for ( i =index; i < n; i++)
+        {
+            headmovement+=ar[i]-initial;
+            initial=ar[i];
+        }
         break;
 
     default:
