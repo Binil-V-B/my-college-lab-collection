@@ -18,9 +18,10 @@
 */
 
 #include<stdio.h>
+#include<stdlib.h>
 
 void main(){
-    int n,initial,dir,index;
+    int n,initial,dir,index,headmovement=0,max;
     printf("enter the no of requests: ");
     scanf("%d",&n);
     int ar[n];
@@ -35,18 +36,21 @@ void main(){
     {
         for (int j = 0; j < n-i-1; j++)
         {
-            if (ar[i]<ar[i+1])
+            if (ar[j]>ar[j+1])
             {
-                temp=ar[i+1];
-                ar[i+1]=ar[i];
-                ar[i]=temp;   
+                temp=ar[j+1];
+                ar[j+1]=ar[j];
+                ar[j]=temp;   
             } 
         }
     }
 
     printf("enter the initial position of the head: ");
     scanf("%d",&initial);
-    printf("enter the initial head movement:\n 1-high \n 0-low");
+    printf("enter the max no of cylinders: ");
+    scanf("%d",&max);
+    max--;
+    printf("enter the initial head movement:\n 1-high \n 0-low\n: ");
     scanf("%d",&dir);    
 
     for (int i = 0; i < n; i++)
@@ -56,6 +60,7 @@ void main(){
             index=i;
             break;
         }
+        index=i;
     }
 
     
@@ -64,13 +69,29 @@ void main(){
     switch (dir)
     {
     case 1 :
-
+        for (int i = index; i < n; i++)
+        {
+            headmovement+=abs(initial-ar[i]);
+            initial=ar[i];
+        }
+            headmovement+=max-initial;
+            headmovement+=max;
+            headmovement+=ar[index-1];
         break;
     
     case 0 :
+    for (int i = index-1; i >= 0; i--)
+        {
+            headmovement+=abs(initial-ar[i]);
+            initial=ar[i];
+        }
+        headmovement+=initial;
+        headmovement+=max;
+        headmovement+=max-ar[index];
         break;
 
     default:
         break;
     }
+    printf("total headmovement = %d\n",headmovement);
 }
