@@ -37,32 +37,13 @@ void sort(pro ar[], int n){          //selection sort is implemented here
             temp = ar[i];
             ar[i]=ar[small];
             ar[small] = temp;
-        }
-        
-        
-        
+        }  
     }
     
 }
 
-void work(pro ar[],int n, int ts,int rq){
-    int k;
-    if (ar[0].bt1 <= ts)
-    {
-        ar[0].ct = ar[0].bt + ar[0].at;
-        ar[0].bt1=0;
-    }
-    else{
-        ar[0].ct = ar[0].bt + ar[0].at;
-        ar[0].bt1 = ar[0].bt1-ts;
-    }
-    rq[0]=ar[0].pno; 
-    ar[0].flag = 1;
-
-    for (int i = 0; i < n; ++i)
-    {
-        /* code */
-    }
+void work(pro ar[],int n){
+     
 }
 
 
@@ -71,10 +52,10 @@ void work(pro ar[],int n, int ts,int rq){
 
 
 void print(pro ar[],int n){
-    printf("process|\tat|\tbt|\n");
+    printf("process\tat\tbt\tct\ttat\twt\n");
     for (int i = 0; i < n; i++)
     {
-        printf("%d\t%d\t%d\n",i+1,ar[i].at,ar[i].bt);
+        printf("%d\t%d\t%d\t%d\t%d\t%d\n",i+1,ar[i].at,ar[i].bt,ar[i].ct,ar[i].tat,ar[i].wt);
     }
     printf("\n");
     
@@ -91,10 +72,9 @@ void main(){
     scanf("%d",&ts);
 	printf("enter the no of process: ");
 	scanf("%d",&n);
+    printf("enter the time slice");
+    scanf("%d",&ts);
 	pro ar[n];
-	read(ar,n);
-    print(ar,n);
-    sort(ar,n);
-    print(ar,n);
-    work(ar,n,ts,rq)
+    read(ar,n);
+	
 }

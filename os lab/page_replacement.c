@@ -17,7 +17,7 @@ check if avail 0
     k=(k+1)%nf
     print all the value in the frame
 increment i
-goto line 
+goto line
 
 */
 
