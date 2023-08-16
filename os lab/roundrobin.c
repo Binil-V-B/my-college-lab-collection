@@ -18,6 +18,7 @@ void read(pro ar[],int n){
     scanf("%d",&ar[i].bt);
     ar[i].bt1 = ar[i].bt;
     ar[i].flag=0;
+    printf("\n");
     }
 }
 
@@ -127,10 +128,6 @@ void print(pro ar[],int n){
 }
 
 
-
-
-
-
 void main(){
 	int n,ts,rq[50],k;
     float avg_tat,avg_wt;
@@ -148,10 +145,7 @@ void main(){
     printf("ready queue: \n");
     for (int i = 0; i < k; i++)
     {
-        printf("%d ",&rq[i]);
+        printf("%d ",rq[i]);
     }
     printf("\naverage turn around time=%f\naverage waiting time =%f\n",avg_tat,avg_wt);
-    
-    
-	
 }
