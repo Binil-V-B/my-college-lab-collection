@@ -118,7 +118,7 @@ void calc(pro ar[], int n,float *tat,float *wt){
 }
 
 void print(pro ar[],int n){
-    printf("process\tat\tbt\tct\ttat\twt\n");
+    printf("pid\tat\tbt\tct\ttat\twt\n");
     for (int i = 0; i < n; i++)
     {
         printf("%d\t%d\t%d\t%d\t%d\t%d\n",ar[i].pid,ar[i].at,ar[i].bt,ar[i].ct,ar[i].tat,ar[i].wt);

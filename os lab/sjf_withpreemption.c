@@ -32,7 +32,7 @@ void sort(struct process ar[],int n){
 void work(struct process ar[],int n){
 	int i=0,current_time,no=0,j,small;
 	current_time=ar[0].at;
-	for(;no!=n;){
+	for(;no!=n;){ //no tracks the no of processes finished and n is the total no of processes
 		ar[i].bt_c--;
 		current_time++;
 		if(ar[i].bt_c==0){
