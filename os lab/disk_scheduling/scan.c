@@ -71,7 +71,7 @@ void main(){
         {
             index=i;break;
         }
-        
+        index=i;
     }
     
 
@@ -80,7 +80,7 @@ void main(){
     case 1:
         for (i = index; i < n; i++)
         {
-            headmovement+=ar[i]-initial;
+            headmovement+=abs(ar[i]-initial);
             initial=ar[i];
         }
         headmovement+=max-initial;
@@ -95,7 +95,7 @@ void main(){
     case 0:
         for (i = index-1; i >= 0; i--)
         {
-            headmovement+=initial-ar[i];
+            headmovement+=abs(initial-ar[i]);
             initial=ar[i];
         }
         headmovement+=initial;
