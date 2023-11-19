@@ -59,8 +59,19 @@ void print(struct process ar[],int n){
     printf("\n");
 }
 
+void calc(struct process ar[],int n,float *t_wt,float *t_tat){
+	int total_wt=0,total_tat=0;
+	for (int i = 0; i < n; ++i)
+	{
+		total_wt+=ar[i].wt;
+		total_tat+=ar[i].tat;
+	}
+	*t_tat=total_tat;
+	*t_wt=total_wt;
+}
 void main(){
 	int n;
+	float t_wt,t_tat;
 	printf("Enter the no of processe: ");
 	scanf("%d",&n);
 	struct process ar[n];
@@ -68,6 +79,8 @@ void main(){
 	sort(ar,n);
 	work(ar,n);
 	print(ar,n);
+	calc(ar,n,&t_wt,&t_tat);
+	printf("\naverage waiting time= %0.2fms\naverage turn around time=%0.2fms\n",t_wt/n,t_tat/n);
 }
 
 
