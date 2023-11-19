@@ -1,151 +1,144 @@
 #include<stdio.h>
-
-struct process{
-    int at,bt,ct,tat,wt,bt1,flag,pid;
+struct sjf
+{
+    int pno;
+    int at;
+    int bt;
+    int wt;
+    int ct;
+    int tat;
+    int rebt;
 };
-typedef struct process pro;
-
-
-void read(pro ar[],int n){
-    printf("\nenter the details of the processes: \n");
-    for (int i = 0; i < n; i++)
+void sort(struct sjf s[],int n);
+void display(struct sjf s[],int n);
+void main()
+{
+    struct sjf s[10];
+    int rq[20],k,ts,l;
+    int n,i,j,flag[10];
+    float avg_wt=0,avg_tat=0;
+    printf("Enter the number of processes");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
     {
-    printf("enter the process id: ");
-    scanf("%d",&ar[i].pid);
-	printf("arrival time of process no %d:",i+1);
-	scanf("%d",&ar[i].at);
-    printf("burst time of process no %d:",i+1);
-    scanf("%d",&ar[i].bt);
-    ar[i].bt1 = ar[i].bt;
-    ar[i].flag=0;
-    printf("\n");
+        printf("Enter the processes no:");
+        scanf("%d",&s[i].pno);
+        printf("Enter the arrival time of processes %d:",s[i].pno);
+        scanf("%d",&s[i].at);
+        printf("Enter the burst time of processes %d:",s[i].pno);
+        scanf("%d",&s[i].bt);
+        s[i].wt=0;
+        s[i].ct=0;
+        s[i].tat=0;
+        flag[i]=0;
+        s[i].rebt=s[i].bt;
     }
-}
-
-void sort(pro ar[], int n){          //selection sort is implemented here
-    int small;
-    pro temp;
-    for (int i = 0; i < n-1; i++)
+    printf("Enter time slice:");
+    scanf("%d",&ts);
+    printf("Before Scheduling\n");
+    printf("*****************\n");
+    display(s,n);
+    sort(s,n);
+    display(s,n);
+     // For calculating the completion time.
+    //first process
+    if(s[0].bt<ts)
     {
-        small =i;
-        for (int j = i; j < n ; j++)
-        {
-            if (ar[j].at < ar[small].at)
-            {
-                small = j;
-            }    
-        }
-        if (small != i)
-        {
-            temp = ar[i];
-            ar[i]=ar[small];
-            ar[small] = temp;
-        }  
-    }    
-}
-
-int work(pro ar[],int n,int ts,int rq[]){
-    int k;
-    rq[0]=0;
-    if (ar[0].bt<=ts)
+        s[0].ct+=s[0].bt+s[0].at;
+        s[0].rebt=0;
+    }
+    else
     {
-        ar[0].ct=ar[0].at+ar[0].bt;
-        ar[0].bt1=0;
+        s[0].ct+=ts+s[0].at;
+        s[0].rebt=s[0].rebt-ts;
     }
-    else{
-        ar[0].ct=ar[0].at+ts;
-        ar[0].bt1=ar[0].bt1-ts;
-    }
-    ar[0].flag=1;
+    flag[0]=1;//taken this process
     k=1;
-
-    for (int i = 1; i < n; i++)      //loop to add new process to the ready queue
+    for(i=1;i<n;i++)
     {
-        if (ar[i].at<=ar[0].ct && ar[i].flag==0)
+        if(s[i].at<=s[0].ct)
         {
             rq[k++]=i;
-            ar[i].flag=1;
+            flag[i]=1;
         }
     }
-    if (ar[0].bt1>0)
-    {
+    if(s[0].rebt>0)
         rq[k++]=0;
-    }
-
-
-    for (int j = 1; j < k; j++)
+    for(i=1;i<k;i++)//take process from ready queue
     {
-        if (ar[rq[j]].bt1 <= ts)
+        if(s[rq[i]].rebt<ts)
         {
-            ar[rq[j]].ct=ar[rq[j-1]].ct+ar[rq[j]].bt1;
-            ar[rq[j]].bt1=0;
+        
+            s[rq[i]].ct=s[rq[i-1]].ct+s[rq[i]].rebt;
+            s[rq[i]].rebt=0;        
         }
-        else{
-            ar[rq[j]].bt1=ar[rq[j]].bt1-ts;
-            ar[rq[j]].ct=ar[rq[j-1]].ct+ts;
-        }
-
-        for (int i = 0; i < n; i++)
+        else
         {
-            if (ar[i].at<=ar[rq[j]].ct && ar[i].flag==0)
+            s[rq[i]].ct=s[rq[i-1]].ct+ts;
+            s[rq[i]].rebt=s[rq[i]].rebt-ts; 
+        }
+        for(j=0;j<n;j++)
+        {
+            if(s[j].at<=s[rq[i]].ct && flag[j]==0)
             {
-                rq[k++]=i;
-                ar[i].flag=1;
+                rq[k++]=j;
+                flag[j]=1;
+            }
+        }
+        if(s[rq[i]].rebt>0)
+            rq[k++]=rq[i];
+    }
+    for(l=0;l<k;l++)
+        printf("Ready Queue:%d  ",s[rq[l]].pno);
+    // For calculating the turn around time.
+    for(i=0;i<n;i++)
+    {
+        s[i].tat+=s[i].ct-s[i].at;  
+    }
+    // For calculating the waiting time.
+    for(i=0;i<n;i++)
+    {
+        s[i].wt=s[i].tat-s[i].bt;
+    }
+    printf("\nAfter Scheduling\n");
+    printf("****************\n");
+    display(s,n);
+    // For calculating the Avg waiting time.
+    for(i=0;i<n;i++)
+    {
+        avg_wt+=s[i].wt;
+    }
+    avg_wt=(float)avg_wt/n;
+    for(i=0;i<n;i++)
+    {
+        avg_tat+=s[i].tat;
+    }
+    avg_tat=avg_tat/(float)n;
+    printf("\nAverage waiting time=%0.2fms",avg_wt);
+    printf("\nAverage turn around time=%0.2fms\n",avg_tat);
+}
+void sort(struct sjf s[],int n)
+{
+    int i,j;
+    struct sjf temp;
+    for(i=0;i<n;i++)
+        for(j=0;j<n-i-1;j++)
+        {
+            if((s[j].at>s[j+1].at ) )
+            {
+                temp=s[j];
+                s[j]=s[j+1];
+                s[j+1]=temp;
             }
         }
 
-        if (ar[rq[j]].bt1>0)
-        {
-            rq[k++]=rq[j];
-        }
-    }
-    return k;
 }
-
-void calc(pro ar[], int n,float *tat,float *wt){
-    float avg_tat=0,avg_wt=0;
-    for (int i = 0; i < n; i++)
+void display(struct sjf s[],int n)
+{
+    int i;
+    printf("Process No    Arr.Time   Burst.Time     Wait.Time    Com.Time    Turn aroud.Time\n");
+    for(i=0;i<n;i++)
     {
-        ar[i].tat=ar[i].ct-ar[i].at;
-        ar[i].wt = ar[i].tat-ar[i].bt;
-        avg_tat+=ar[i].tat;
-        avg_wt+=ar[i].wt;
+        printf("   %d\t\t   %d\t\t%d \t  %d   \t       %d      \t     %d\n",s[i].pno,s[i].at,s[i].bt,s[i].wt,s[i].ct,s[i].tat);
     }
-    avg_tat=avg_tat/n;
-    avg_wt=avg_wt/n;
-    *tat = avg_tat;
-    *wt = avg_wt;
-}
-
-void print(pro ar[],int n){
-    printf("pid\tat\tbt\tct\ttat\twt\n");
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d\t%d\t%d\t%d\t%d\t%d\n",ar[i].pid,ar[i].at,ar[i].bt,ar[i].ct,ar[i].tat,ar[i].wt);
-    }
-    printf("\n");
-    
-}
-
-
-void main(){
-	int n,ts,rq[50],k;
-    float avg_tat,avg_wt;
-	printf("enter the no of process: ");
-	scanf("%d",&n);
-    printf("enter the time slice: ");
-    scanf("%d",&ts);
-	pro ar[n];
-    read(ar,n);
-    sort(ar,n);
-    print(ar,n);
-    k=work(ar,n,ts,rq);
-    calc(ar,n,&avg_tat,&avg_wt);
-    print(ar,n);
-    printf("ready queue: \n");
-    for (int i = 0; i < k; i++)
-    {
-        printf("%d ",rq[i]);
-    }
-    printf("\naverage turn around time=%f\naverage waiting time =%f\n",avg_tat,avg_wt);
 }
