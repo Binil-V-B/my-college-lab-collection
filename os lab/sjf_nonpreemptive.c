@@ -82,5 +82,3 @@ void main(){
 	calc(ar,n,&t_wt,&t_tat);
 	printf("\naverage waiting time= %0.2fms\naverage turn around time=%0.2fms\n",t_wt/n,t_tat/n);
 }
-
-

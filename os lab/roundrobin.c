@@ -17,7 +17,7 @@ void main()
     int rq[20],k,ts,l;
     int n,i,j,flag[10];
     float avg_wt=0,avg_tat=0;
-    printf("Enter the number of processes");
+    printf("Enter the number of processes:");
     scanf("%d",&n);
     for(i=0;i<n;i++)
     {
@@ -139,6 +139,6 @@ void display(struct sjf s[],int n)
     printf("Process No    Arr.Time   Burst.Time     Wait.Time    Com.Time    Turn aroud.Time\n");
     for(i=0;i<n;i++)
     {
-        printf("   %d\t\t   %d\t\t%d \t  %d   \t       %d      \t     %d\n",s[i].pno,s[i].at,s[i].bt,s[i].wt,s[i].ct,s[i].tat);
+        printf("%d\t\t%d\t\t%d\t%d\t\t%d\t\t%d\n",s[i].pno,s[i].at,s[i].bt,s[i].wt,s[i].ct,s[i].tat);
     }
 }

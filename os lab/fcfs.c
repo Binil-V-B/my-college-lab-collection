@@ -80,7 +80,7 @@ void main(){
     sort(ar,a);
     calc(ar,a,&avg_tat,&avg_wt);
     print(ar,a,1);
-    printf("average waiting time: %.2f",avg_wt);
-    printf("\naverage turn around time: %.2f",avg_tat);
+    printf("average waiting time: %.2fms",avg_wt);
+    printf("\naverage turn around time: %.2fms",avg_tat);
 
 }
