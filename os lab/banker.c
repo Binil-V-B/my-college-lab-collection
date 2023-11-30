@@ -48,7 +48,7 @@ void main(){
     int available[nr],work[nr],ss[np],finish[np];
     int max[np][nr],allocation[np][nr],need[np][nr];
 
-    printf("enter the allocation matrix: ");
+    printf("enter the allocation matrix: \n");
     for (int i = 0; i < np; i++)
     {
         for (int j = 0; j < nr; j++)
@@ -58,7 +58,7 @@ void main(){
         
     }
 
-    printf("enter the max matrix: ");
+    printf("enter the max matrix: \n");
     for (int i = 0; i < np; i++)
     {
         for (int j = 0; j < nr; j++)
@@ -68,7 +68,7 @@ void main(){
         
     }
 
-    printf("enter the available resources: ");
+    printf("enter the available resources: \n");
     for (int i = 0; i < nr; i++)
     {
         scanf("%d",&available[i]);
@@ -126,12 +126,6 @@ void main(){
         
     }
     
-    // for (int i = 0; i < np; i++)
-    // {
-    //     printf("%d\t",finish[i]);
-    // }
-    // printf("\n");
-
     flag=0;
     for (int i = 0; i < np; i++)
     {
@@ -148,7 +142,12 @@ void main(){
         printf("system is safe\nsafe sequence: ");
         for (int i = 0; i < np; i++)
         {
-            printf(" %d ",ss[i]);    
+            printf(" P%d ",ss[i]);
+            if (i<np-1)
+            {
+                printf(" -> ");
+            }
+                
         }
         printf("\n");
         
