@@ -47,7 +47,7 @@ void main()
             break;
         }
         }
-        while(!feof(fp));
+        while(feof(fp)==0);
   }        
   fclose(fp);
 }
