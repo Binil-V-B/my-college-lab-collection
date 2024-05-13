@@ -12,7 +12,7 @@ int main(int argc,char* argv[]){
 	if(sockfd==-1)
 	printf("Error in socket();");
 	server.sin_addr.s_addr=INADDR_ANY;
-	server.sin_port=htons(atoi(argv[2]));
+	server.sin_port=htons(atoi(argv[1]));
 	char buffer[100];
 	printf("Enter a message to be sent to server: ");
 	fgets(buffer,100,stdin);
