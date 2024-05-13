@@ -8,14 +8,14 @@
 #include<unistd.h>
 #include<arpa/inet.h>
 #include<fcntl.h>
-int main() {
+int main(int argc,char** argv) {
  int s_sock, c_sock;
  s_sock = socket(AF_INET, SOCK_STREAM, 0);
  struct sockaddr_in server, other;
  memset(&server, 0, sizeof(server));
  memset(&other, 0, sizeof(other));
  server.sin_family = AF_INET;
- server.sin_port = htons(9009);
+ server.sin_port = htons(atoi(argv[1]));
  server.sin_addr.s_addr = INADDR_ANY;
  socklen_t add;
  

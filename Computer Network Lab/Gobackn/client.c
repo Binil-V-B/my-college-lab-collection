@@ -8,13 +8,13 @@
 #include<string.h>
 #include<unistd.h>
 #include<arpa/inet.h>
-int main() {
+int main(int argc,char ** argv) {
  int c_sock;
  c_sock = socket(AF_INET, SOCK_STREAM, 0);
  struct sockaddr_in client;
  memset(&client, 0, sizeof(client));
  client.sin_family = AF_INET;
- client.sin_port = htons(9009);
+ client.sin_port = htons(atoi(argv[1]));
  client.sin_addr.s_addr = inet_addr("127.0.0.1");
   if(connect(c_sock, (struct sockaddr*)&client, sizeof(client)) == -1) 
 {
