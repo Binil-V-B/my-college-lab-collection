@@ -21,6 +21,7 @@ int main()
     printf("\nEnter data to be send:");
     fgets(buf,100,stdin);
     k=send(sock_desc,buf,100,0);
+    if(k==-1):
     printf("Error in sending");
     close(sock_desc);
     return 0;
